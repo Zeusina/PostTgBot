@@ -12,15 +12,20 @@ bot = Bot(token=getenv("TOKEN"))
 # Инициализация диспетчера
 dp = Dispatcher(bot)
 
+
 def on_startup():
     # Регистрация хэндлеров
     logging.info("Бот запущен!")
 
+
 dp.register_message_handler(client.start, commands="start")
+
+
 # эхо-бот
 @dp.message_handler()
 async def echo(message: types.Message):
     await message.answer(message.text)
+
 
 # Запуск бота
 if __name__ == "__main__":
