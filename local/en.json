@@ -1,0 +1,7 @@
+{
+  "en": {
+    "messages": {
+      "start": "Hi, %username%!\n You have launched a bot to create posts in channels."
+    }
+  }
+}
