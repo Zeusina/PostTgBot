@@ -1,8 +1,7 @@
-from aiogram import Bot, Dispatcher, executor, types
-from os import getenv
+from aiogram import executor, types
 from handlers import client
-from utils import ConfigUtils, LoggingUtils, TranslationUtils
-
+from utils import ConfigUtils, LoggingUtils
+from init import dp
 
 # Инициализация конфига
 Config_Utils = ConfigUtils()
@@ -10,12 +9,6 @@ config = Config_Utils.config_parse()
 
 # Настройка логов
 logger = LoggingUtils().log
-
-# Инициализация бота
-bot = Bot(token=getenv("TOKEN"))
-
-# Инициализация диспетчера
-dp = Dispatcher(bot)
 
 
 def on_startup():
