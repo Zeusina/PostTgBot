@@ -1,13 +1,12 @@
-import logging
 from aiogram import types
-from utils import Telegram_utils, Parse_utils, LoggingUtils
 
-Tg_utils = Telegram_utils()
-Parse_utils = Parse_utils()
-logger = LoggingUtils("Client_handlers").log
+from Bot import dp
+from utils import LoggingUtils, TranslationUtils
+
+log = LoggingUtils("Client_handlers").log
+_ = TranslationUtils(dp).return_gettext()
+
 
 async def start(message: types.Message):
-    locale = await Tg_utils.get_user_locale(message)
-    locale = await Parse_utils.get_locale(locale)
-    await message.answer(locale["messages"]["start"].replace("%username%", message.from_user.username))
-    logger.info(f"Bot started by {message.from_user.username} with locale {message.from_user.locale}")
+    await message.answer(_("Привет, %username%!\nВы запустили бота для создания постов в каналах.").replace("%username%", message.from_user.username))
+    log.info(f"User {message.from_user.username} with locale {message.from_user.locale} started bot!")

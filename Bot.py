@@ -1,8 +1,8 @@
 from aiogram import Bot, Dispatcher, executor, types
 from os import getenv
 from handlers import client
-import logging
-from utils import Parse_utils, ConfigUtils, LoggingUtils
+from utils import ConfigUtils, LoggingUtils, TranslationUtils
+
 
 # Инициализация конфига
 Config_Utils = ConfigUtils()
@@ -10,7 +10,6 @@ config = Config_Utils.config_parse()
 
 # Настройка логов
 logger = LoggingUtils().log
-
 
 # Инициализация бота
 bot = Bot(token=getenv("TOKEN"))
@@ -21,7 +20,7 @@ dp = Dispatcher(bot)
 
 def on_startup():
     # Регистрация хэндлеров
-    logger.info("Бот запущен!")
+    logger.info("Bot started!")
 
 
 dp.register_message_handler(client.start, commands="start")
