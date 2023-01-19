@@ -1,0 +1,29 @@
+# English translations for PostTgBot.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PostTgBot project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PostTgBot VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-01-19 18:18+0300\n"
+"PO-Revision-Date: 2023-01-19 18:21+0300\n"
+"Last-Translator: \n"
+"Language-Team: en <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.9.1\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: handlers/client.py:11
+#, python-format
+msgid ""
+"Привет, %username%!\n"
+"Вы запустили бота для создания постов в каналах."
+msgstr ""
+"Hi, %username%!\n"
+"You launched a bot for creating posts in channels."
