@@ -1,7 +1,7 @@
 from aiogram import types
 from utils import LoggingUtils
 
-log = LoggingUtils("Client_handlers").log
+log = LoggingUtils("handlers.client").log
 
 
 
