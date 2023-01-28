@@ -39,13 +39,6 @@ def register_handlers():
 
 register_handlers()
 
-
-# эхо-бот
-@dp.message_handler()
-async def echo(message: types.Message):
-    await message.answer(message.text)
-
-
 # Запуск бота
 if __name__ == "__main__":
     executor.start_polling(dp, on_startup=on_startup())
