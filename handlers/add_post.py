@@ -45,7 +45,7 @@ async def add_channel(msg: types.Message, state: FSMContext):
     if msg.text.isdigit():
         await state.update_data(words=msg.text)
         await types.ChatActions.upload_audio()
-        await msg.answer("Пожалуйста отправьте изложение")
+        await msg.answer("Пожалуйста отправьте изложение", reply_markup=types.ReplyKeyboardRemove())
         await state.set_state(AddPost.checking)
     else:
         await msg.answer("Пожалуйста отправьте число")
@@ -90,4 +90,4 @@ async def send(msg: types.Message, state: FSMContext):
 
 async def cancel(msg: types.Message, state: FSMContext):
     await state.finish()
-    await msg.answer("Отменено")
+    await msg.answer("Отменено", reply_markup=types.ReplyKeyboardRemove())
