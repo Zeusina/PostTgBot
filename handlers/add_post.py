@@ -1,12 +1,13 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
-from utils import SampleUtils, ConfigUtils
+from utils import SampleUtils, ConfigUtils, SecretsUtils
 from utils import LoggingUtils
 from os import getenv
 
 log = LoggingUtils("handlers.add_post").log
 config = ConfigUtils().config_parse()
+secrets = SecretsUtils()
 
 
 class AddPost(StatesGroup):
@@ -76,10 +77,11 @@ async def check(msg: types.Message, state: FSMContext):
 
 
 async def send(msg: types.Message, state: FSMContext):
-    if msg.from_user.id == int(getenv("ADMIN_ID")):
+    admins = secrets.get_admins()
+    if msg.from_user.id in admins:
         if msg.text == "/send":
             data = await state.get_data()
-            await msg.bot.send_audio(-int(getenv("CHAT_ID")), data.get("audio"), caption=data.get("ms"), parse_mode='HTML')
+            await msg.bot.send_audio(secrets.get_channel()[0], data.get("audio"), caption=data.get("ms"), parse_mode='HTML')
             await msg.answer("Пост успешно отправлен!")
             await state.finish()
         else:
