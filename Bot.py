@@ -24,9 +24,10 @@ def register_add_post_handlers():
     dp.register_message_handler(add_post.cancel, commands=["cancel"], state="*")
     dp.register_message_handler(add_post.add_name, state=add_post.AddPost.waiting_for_number)
     dp.register_message_handler(add_post.add_words_count, state=add_post.AddPost.waiting_for_name)
-    dp.register_message_handler(add_post.add_channel, state=add_post.AddPost.waiting_for_words_count)
-    dp.register_message_handler(add_post.add_music_file, state=add_post.AddPost.waiting_for_channel)
-    dp.register_message_handler(add_post.check, state=add_post.AddPost.checking, content_types=types.ContentTypes.AUDIO)
+    dp.register_message_handler(add_post.add_file, state=add_post.AddPost.waiting_for_words_count)
+    dp.register_message_handler(add_post.add_channel, state=add_post.AddPost.waiting_for_file,
+                                content_types=types.ContentTypes.AUDIO)
+    dp.register_callback_query_handler(add_post.check, state=add_post.AddPost.checking, text="channel")
     dp.register_message_handler(add_post.send, state=add_post.AddPost.waiting_for_send, commands=["send"])
 
     logger.info("Add post handlers registered!")
