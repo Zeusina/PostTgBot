@@ -4,11 +4,11 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import KeyboardButtonRequestChat, ChatAdministratorRights
 
 from utils import LoggingUtils
-from utils import SampleUtils, ConfigUtils, SecretsUtils
+from utils import SampleUtils, ConfigUtils
 
 log = LoggingUtils("handlers.add_post").log
 config = ConfigUtils().config_parse()
-secrets = SecretsUtils()
+sample = SampleUtils().get_sample()
 
 
 class AddPost(StatesGroup):
@@ -72,7 +72,6 @@ async def add_channel(msg: types.Message, state: FSMContext):
 async def check(msg: types.Message, state: FSMContext):
     chat = msg.chat_shared.to_python().get("chat_id")
     data = await state.get_data()
-    sample = SampleUtils().get_sample()
     message = ""
     message += (sample.get('name').replace('%name%', data.get('name')) + "\n")
     message += (sample.get('number').replace('%number%', data.get('number')) + "\n")
