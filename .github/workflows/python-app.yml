@@ -39,4 +39,4 @@ jobs:
         pytest
     - name: run
       run: |
-      python Bot.py
+        python Bot.py
