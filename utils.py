@@ -4,7 +4,8 @@ import logging
 
 
 class ConfigUtils:
-    def config_parse(self):
+    @staticmethod
+    def config_parse():
         config = configparser.ConfigParser()
         config.read("config.ini", encoding="utf-8")
         return config
@@ -39,18 +40,3 @@ class SampleUtils:
         with open(self.config['SAMPLE']['name'].strip() + self.config['SAMPLE']['ext'].strip(), "r", encoding="utf-8") as f:
             data = json.load(f)
         return data['post_text']
-
-
-class SecretsUtils:
-    def __init__(self):
-        log.info("Secrets utils initialized!")
-        self.config = ConfigUtils().config_parse()
-        with open(self.config['SECRETS']['name'].strip() + self.config['SECRETS']['ext'].strip(), "r",
-                  encoding="utf-8") as f:
-            self.secrets = json.load(f)
-
-    def get_admins(self):
-        return self.secrets['admins']
-
-    def get_channel(self):
-        return self.secrets['channels']
