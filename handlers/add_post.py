@@ -1,3 +1,5 @@
+from typing import Any
+
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.dispatcher.filters.state import StatesGroup, State
@@ -15,10 +17,10 @@ class AddPost(StatesGroup):
     """
     Class with a states for the post state machine
     """
-    def __init__(self) -> None:
+    def __init__(self) -> Any:
         """
         Initialize states
-        :return: None
+        :return: Any
         """
         log.info("FSM states initialized!")
 
@@ -31,23 +33,23 @@ class AddPost(StatesGroup):
     waiting_for_send = State()
 
 
-async def start_add(msg: types.Message, state: FSMContext) -> None:
+async def start_add(msg: types.Message, state: FSMContext) -> Any:
     """
     Send request to add exposition number
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     await msg.answer("Пожалуйста отправьте номер изложения")
     await state.set_state(AddPost.waiting_for_number)
 
 
-async def add_name(msg: types.Message, state: FSMContext) -> None:
+async def add_name(msg: types.Message, state: FSMContext) -> Any:
     """
     Receive exposition number and send request to add exposition name
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     if msg.text.isdigit():
         await state.update_data(number=msg.text)
@@ -57,24 +59,24 @@ async def add_name(msg: types.Message, state: FSMContext) -> None:
         await msg.answer("Пожалуйста отправьте число")
 
 
-async def add_words_count(msg: types.Message, state: FSMContext) -> None:
+async def add_words_count(msg: types.Message, state: FSMContext) -> Any:
     """
     Receive exposition name and send request to add exposition words count
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     await state.update_data(name=msg.text)
     await msg.answer("Пожалуйста отправьте количество слов в исходном тексте")
     await state.set_state(AddPost.waiting_for_words_count)
 
 
-async def add_file(msg: types.Message, state: FSMContext) -> None:
+async def add_file(msg: types.Message, state: FSMContext) -> Any:
     """
     Receive exposition words count and send request to add exposition file
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     if msg.text.isdigit():
         await state.update_data(words=msg.text)
@@ -85,12 +87,12 @@ async def add_file(msg: types.Message, state: FSMContext) -> None:
         await msg.answer("Пожалуйста отправьте число")
 
 
-async def add_channel(msg: types.Message, state: FSMContext) -> None:
+async def add_channel(msg: types.Message, state: FSMContext) -> Any:
     """
     Receive exposition file and send request to add channel for sending post
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     await state.update_data(audio=msg.audio.file_id)
     kb = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1, one_time_keyboard=True)
@@ -106,12 +108,12 @@ async def add_channel(msg: types.Message, state: FSMContext) -> None:
     await state.set_state(AddPost.checking)
 
 
-async def check(msg: types.Message, state: FSMContext) -> None:
+async def check(msg: types.Message, state: FSMContext) -> Any:
     """
     Receive exposition channel for post and send check message
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     chat = msg.chat_shared.to_python().get("chat_id")
     data = await state.get_data()
@@ -127,12 +129,12 @@ async def check(msg: types.Message, state: FSMContext) -> None:
     await state.set_state(AddPost.waiting_for_send)
 
 
-async def send(msg: types.Message, state: FSMContext) -> None:
+async def send(msg: types.Message, state: FSMContext) -> Any:
     """
     Receive agree/disagree and send post or cancel
     :param msg: types.Message
     :param state: FsMContext
-    :return: None
+    :return: Any
     """
     data = await state.get_data()
     await msg.bot.send_audio(data.get("channel"), data.get("audio"), caption=data.get("ms"),
@@ -141,12 +143,12 @@ async def send(msg: types.Message, state: FSMContext) -> None:
     await state.finish()
 
 
-async def cancel(msg: types.Message, state: FSMContext) -> None:
+async def cancel(msg: types.Message, state: FSMContext) -> Any:
     """
     Canceling the state and cleaning the cache
     :param msg: Message
     :param state: FSMContext
-    :return: None
+    :return: Any
     """
     await state.finish()
     await msg.answer("Отменено", reply_markup=types.ReplyKeyboardRemove())
