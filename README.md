@@ -7,4 +7,4 @@
  - Выбор канала для отправки через кнопку(Telegram обновление за Февраль 2023)
  
 
-[![wakatime](https://wakatime.com/badge/user/7457252f-ddf9-4b15-a7c5-a3624588da26/project/1a66f9fe-4784-424b-83c0-90a3cd5230c6.svg)](https://wakatime.com/badge/user/7457252f-ddf9-4b15-a7c5-a3624588da26/project/1a66f9fe-4784-424b-83c0-90a3cd5230c6)
+[![wakatime](https://wakatime.com/badge/github/Zeusina/PostTgBot.svg)](https://wakatime.com/badge/github/Zeusina/PostTgBot)
