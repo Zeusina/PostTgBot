@@ -1,7 +1,0 @@
-{
-  "post_text": {
-    "number": "Номер изложения: <code>%number%</code>",
-    "name": "Название изложения: <code>%name%</code>",
-    "words": "Количество слов: <code>%words%</code>"
-  }
-}
