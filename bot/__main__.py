@@ -1,6 +1,6 @@
 from aiogram import Dispatcher, Bot
 import os
-from commands import register_user_commands
+from handlers import register_user_commands
 import asyncio
 import logging
 
