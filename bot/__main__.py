@@ -4,7 +4,7 @@ from commands import register_user_commands
 import asyncio
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 
 async def main() -> None:
@@ -18,6 +18,7 @@ async def main() -> None:
 
 if __name__ == "__main__":
     try:
+        logging.info("Bot started")
         asyncio.run(main())
     except KeyboardInterrupt:
         logging.info("Bot stopped by user")
