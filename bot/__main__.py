@@ -1,6 +1,11 @@
 from aiogram import Dispatcher, Bot
 import os
-from handlers import register_user_commands
+
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.types import BotCommand
+
+from bot.handlers import bot_commands
+import handlers
 import asyncio
 import logging
 
@@ -8,11 +13,14 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(level
 
 
 async def main() -> None:
-    dp = Dispatcher()
+    commands_for_bot = []
+    for cmd in bot_commands:
+        commands_for_bot.append(BotCommand(command=cmd[0], description=cmd[1]))
+    storage = MemoryStorage()
+    dp = Dispatcher(storage=storage)
     bot = Bot(token=os.getenv("TOKEN"))
-
-    register_user_commands(dp)
-
+    handlers.register_user_commands(dp)
+    await bot.set_my_commands(commands=commands_for_bot)
     await dp.start_polling(bot)
 
 
