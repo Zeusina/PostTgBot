@@ -4,8 +4,8 @@ import os
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import BotCommand
 
+from bot import handlers
 from bot.handlers import bot_commands
-import handlers
 import asyncio
 import logging
 
