@@ -2,7 +2,6 @@ FROM python:3.10-slim
 WORKDIR /posttgbot
 
 LABEL authors="Kachu"
-LABEL
 
 RUN apt-get update
 
