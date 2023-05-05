@@ -1,9 +1,7 @@
-FROM python:3.10-slim
+FROM python:3.10-alpine
 WORKDIR /posttgbot
 
 LABEL authors="Kachu"
-
-RUN apt-get update
 
 COPY pyproject.toml .
 COPY bot ./bot
