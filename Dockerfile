@@ -3,13 +3,15 @@ WORKDIR /posttgbot
 
 LABEL authors="Kachu"
 
-COPY pyproject.toml .
-COPY bot ./bot
-
-RUN pip install poetry
-RUN poetry install
+RUN pip install --upgrade pip && \
+pip install poetry
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH "${PYTHONPATH}:./bot"
 
-CMD poetry run python -m bot
+COPY pyproject.toml .
+COPY bot ./bot
+
+RUN poetry install
+
+CMD ["poetry", "run", "python", "-m", "bot"]
