@@ -11,6 +11,6 @@
 - Отправка получившегося поста в канал
 - Выбор канала для отправки через кнопку(Telegram обновление за Февраль 2023)
 ## Поддержка Docker
-Репозиторий  теперь размещен на [Docker Hub](https://hub.docker.com/repository/docker/zeusina/posttgbot). Токен пока-что передается в контейнер через аргумент -e при запуске контейнера как строка или через .env файл.
+Репозиторий  теперь размещен на [Docker Hub](https://hub.docker.com/r/zeusina/posttgbot). Токен пока-что передается в контейнер через аргумент -e при запуске контейнера как строка или через .env файл.
 
 [![wakatime](https://wakatime.com/badge/github/Zeusina/PostTgBot.svg)](https://wakatime.com/badge/github/Zeusina/PostTgBot)
