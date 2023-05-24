@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "postbot"
+name = "posttgnewarch"
 version = "0.1.0"
 description = ""
 authors = ["Zeusina <kachusov_k@outlook.com>"]
@@ -7,9 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-aiogram = "^2.25.1"
-pytest = "^7.2.1"
-pytest-asyncio = "^0.20.3"
+aiogram = {url = "https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.zip"}
 
 
 [build-system]
