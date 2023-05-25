@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "posttgnewarch"
-version = "0.1.0"
+name = "bot"
+version = "0.2.0"
 description = ""
 authors = ["Zeusina <kachusov_k@outlook.com>"]
 readme = "README.md"
@@ -13,3 +13,8 @@ aiogram = {url = "https://github.com/aiogram/aiogram/archive/refs/heads/dev-3.x.
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[package]
+packages = [
+    { include = "bot"}
+]
